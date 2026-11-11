@@ -1,0 +1,222 @@
+[
+  {
+    "id": "m1-h1",
+    "module": 1,
+    "moduleTitle": "HTML, CSS & JavaScript",
+    "type": "Hands-on",
+    "title": "Interactive SVG Animation",
+    "description": "Change an SVG circle from blue to red when the button is clicked using JavaScript DOM access.",
+    "language": "html",
+    "code": "<svg width=\"100\" height=\"100\">\n  <circle id=\"myCircle\" cx=\"50\" cy=\"50\" r=\"40\" fill=\"blue\" />\n</svg>\n<button onclick=\"changeColor()\">Change Color</button>\n\n<script>\nfunction changeColor() {\n  document.getElementById(\"myCircle\").setAttribute(\"fill\", \"red\");\n}\n</script>",
+    "output": "An SVG blue circle appears. Clicking Change Color changes it to red."
+  },
+  {
+    "id": "m1-h2",
+    "module": 1,
+    "moduleTitle": "HTML, CSS & JavaScript",
+    "type": "Hands-on",
+    "title": "Client-Side Game with Canvas (Moving Ball)",
+    "description": "Draw and animate a moving square on an HTML5 Canvas using requestAnimationFrame.",
+    "language": "html",
+    "code": "<canvas id=\"box\" width=\"200\" height=\"100\" style=\"background:#ddd\"></canvas>\n\n<script>\nconst c = document.getElementById(\"box\").getContext(\"2d\");\nlet x = 10;\n\nfunction move() {\n  c.clearRect(0, 0, 200, 100);\n  c.fillRect(x, 40, 20, 20); // Draw square\n  x += 2;\n  if (x < 180) requestAnimationFrame(move);\n}\nmove();\n</script>",
+    "output": "A square moves from left to right across the canvas."
+  },
+  {
+    "id": "m1-c1",
+    "module": 1,
+    "moduleTitle": "HTML, CSS & JavaScript",
+    "type": "Case Study",
+    "title": "Static Portfolio Website",
+    "description": "Create a simple profile card using a semantic HTML structure and inline CSS styling.",
+    "language": "html",
+    "code": "<div style=\"border: 1px solid #aaa; padding: 15px; width: 220px;\">\n  <h2>John Doe</h2>\n  <p>Frontend Web Developer</p>\n  <p>Email: john@example.com</p>\n</div>",
+    "output": "A bordered profile card displays a name, role, and email address."
+  },
+  {
+    "id": "m1-c2",
+    "module": 1,
+    "moduleTitle": "HTML, CSS & JavaScript",
+    "type": "Case Study",
+    "title": "Interactive Form with Validation",
+    "description": "Check that the name input is not empty before allowing form submission.",
+    "language": "html",
+    "code": "<form onsubmit=\"return checkInput()\">\n  <input id=\"name\" type=\"text\" placeholder=\"Enter your name\" />\n  <button type=\"submit\">Submit</button>\n</form>\n\n<script>\nfunction checkInput() {\n  const val = document.getElementById(\"name\").value;\n  if (val == \"\") {\n    alert(\"Name cannot be empty!\");\n    return false;\n  }\n  alert(\"Submitted: \" + val);\n  return true;\n}\n</script>",
+    "output": "An alert asks for a name if the field is empty; otherwise it displays the submitted name."
+  },
+  {
+    "id": "m2-h1",
+    "module": 2,
+    "moduleTitle": "React Basics",
+    "type": "Hands-on",
+    "title": "Dynamic Content Aggregator",
+    "description": "Update a news headline by changing a React state value with useState.",
+    "language": "jsx",
+    "code": "import React, { useState } from 'react';\n\nexport default function App() {\n  const [headline, setHeadline] = useState(\"Sports News: Match Begins!\");\n\n  return (\n    <div>\n      <h3>{headline}</h3>\n      <button onClick={() => setHeadline(\"Tech News: AI Released!\")}>Update News</button>\n    </div>\n  );\n}",
+    "output": "The initial sports headline changes to the technology headline when the button is clicked."
+  },
+  {
+    "id": "m2-h2",
+    "module": 2,
+    "moduleTitle": "React Basics",
+    "type": "Hands-on",
+    "title": "Interactive Data Table (Search Filter)",
+    "description": "Filter a list of names as the user types into a search input.",
+    "language": "jsx",
+    "code": "import React, { useState } from 'react';\n\nexport default function SimpleSearch() {\n  const names = [\"Alice\", \"Bob\", \"Charlie\"];\n  const [search, setSearch] = useState(\"\");\n\n  const filtered = names.filter(n => n.toLowerCase().includes(search.toLowerCase()));\n\n  return (\n    <div>\n      <input placeholder=\"Search name\" onChange={e => setSearch(e.target.value)} />\n      <ul>\n        {filtered.map(name => <li key={name}>{name}</li>)}\n      </ul>\n    </div>\n  );\n}",
+    "output": "The list displays only names that contain the text entered in the search box."
+  },
+  {
+    "id": "m2-c1",
+    "module": 2,
+    "moduleTitle": "React Basics",
+    "type": "Case Study",
+    "title": "Simple Counter App",
+    "description": "Increment and decrement a number using React useState.",
+    "language": "jsx",
+    "code": "import React, { useState } from 'react';\n\nexport default function Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <h2>Count: {count}</h2>\n      <button onClick={() => setCount(count + 1)}>+1</button>\n      <button onClick={() => setCount(count - 1)}>-1</button>\n    </div>\n  );\n}",
+    "output": "The counter starts at 0. The +1 and -1 buttons increase and decrease the count."
+  },
+  {
+    "id": "m2-c2",
+    "module": 2,
+    "moduleTitle": "React Basics",
+    "type": "Case Study",
+    "title": "To-do List App with React",
+    "description": "Add tasks to a list stored in React component state.",
+    "language": "jsx",
+    "code": "import React, { useState } from 'react';\n\nexport default function Todo() {\n  const [tasks, setTasks] = useState([\"Learn HTML\", \"Learn React\"]);\n  const [text, setText] = useState(\"\");\n\n  const add = () => {\n    if (text) {\n      setTasks([...tasks, text]);\n      setText(\"\");\n    }\n  };\n\n  return (\n    <div>\n      <input value={text} onChange={e => setText(e.target.value)} />\n      <button onClick={add}>Add Task</button>\n      <ul>\n        {tasks.map((t, index) => <li key={index}>{t}</li>)}\n      </ul>\n    </div>\n  );\n}",
+    "output": "The initial tasks appear in a list. Enter a task and click Add Task to append it."
+  },
+  {
+    "id": "m3-h1",
+    "module": 3,
+    "moduleTitle": "Components & State",
+    "type": "Hands-on",
+    "title": "Component Library with Theming Support",
+    "description": "Create a reusable button component whose background color and label are passed through props.",
+    "language": "jsx",
+    "code": "import React from 'react';\n\nfunction CustomButton({ color, label }) {\n  return <button style={{ background: color, color: \"white\" }}>{label}</button>;\n}\n\nexport default function App() {\n  return (\n    <div>\n      <CustomButton color=\"blue\" label=\"Primary Button\" />\n      <CustomButton color=\"gray\" label=\"Secondary Button\" />\n    </div>\n  );\n}",
+    "output": "Two reusable buttons appear with different background colors and labels."
+  },
+  {
+    "id": "m3-h2",
+    "module": 3,
+    "moduleTitle": "Components & State",
+    "type": "Hands-on",
+    "title": "Drag-and-Drop Interface",
+    "description": "Make a paragraph draggable and show an alert when it is dropped into a drop area.",
+    "language": "jsx",
+    "code": "import React from 'react';\n\nexport default function DragBox() {\n  return (\n    <div>\n      <p draggable=\"true\" onDragStart={() => console.log(\"Dragging...\")}>\n        Drag this paragraph\n      </p>\n      <div onDrop={() => alert(\"Dropped!\")} onDragOver={e => e.preventDefault()} style={{ border: \"2px dashed black\", padding: 20 }}>\n        Drop area\n      </div>\n    </div>\n  );\n}",
+    "output": "Drag the paragraph into the dashed drop area to see the Dropped! alert."
+  },
+  {
+    "id": "m3-c1",
+    "module": 3,
+    "moduleTitle": "Components & State",
+    "type": "Case Study",
+    "title": "Product Listing Component",
+    "description": "Build a reusable product card component that receives title and price through props.",
+    "language": "jsx",
+    "code": "import React from 'react';\n\nfunction ProductCard({ title, price }) {\n  return (\n    <div style={{ border: \"1px solid #ccc\", margin: 5, padding: 10 }}>\n      <h4>{title}</h4>\n      <p>Price: ${price}</p>\n    </div>\n  );\n}\n\nexport default function Shop() {\n  return (\n    <div>\n      <ProductCard title=\"Mouse\" price=\"20\" />\n      <ProductCard title=\"Keyboard\" price=\"50\" />\n    </div>\n  );\n}",
+    "output": "Two product cards display Mouse ($20) and Keyboard ($50)."
+  },
+  {
+    "id": "m3-c2",
+    "module": 3,
+    "moduleTitle": "Components & State",
+    "type": "Case Study",
+    "title": "Dynamic Form with Controlled Components",
+    "description": "Keep an input field synchronized with React state and display the typed text.",
+    "language": "jsx",
+    "code": "import React, { useState } from 'react';\n\nexport default function InputMirror() {\n  const [text, setText] = useState(\"\");\n\n  return (\n    <div>\n      <input value={text} onChange={e => setText(e.target.value)} placeholder=\"Type here...\" />\n      <p>You are typing: <strong>{text}</strong></p>\n    </div>\n  );\n}",
+    "output": "The text typed into the input is immediately displayed below it."
+  },
+  {
+    "id": "m4-h1",
+    "module": 4,
+    "moduleTitle": "Routing",
+    "type": "Hands-on",
+    "title": "E-commerce Site with Nested Routes",
+    "description": "Read a dynamic product ID from a URL parameter using React Router.",
+    "language": "jsx",
+    "code": "import React from 'react';\nimport { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';\n\nfunction Item() {\n  const { id } = useParams();\n  return <h3>Viewing Product #{id}</h3>;\n}\n\nexport default function App() {\n  return (\n    <BrowserRouter>\n      <Link to=\"/item/1\">Item 1</Link> | <Link to=\"/item/2\">Item 2</Link>\n      <Routes>\n        <Route path=\"/item/:id\" element={<Item />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}",
+    "output": "Click Item 1 or Item 2 to view the corresponding product ID from the route."
+  },
+  {
+    "id": "m4-h2",
+    "module": 4,
+    "moduleTitle": "Routing",
+    "type": "Hands-on",
+    "title": "Document Editor (Route Sessions)",
+    "description": "Switch between Edit and View screens using React Router links.",
+    "language": "jsx",
+    "code": "import React from 'react';\nimport { BrowserRouter, Routes, Route, Link } from 'react-router-dom';\n\nexport default function DocEditor() {\n  return (\n    <BrowserRouter>\n      <Link to=\"/edit\">Edit</Link> | <Link to=\"/view\">View</Link>\n      <Routes>\n        <Route path=\"/edit\" element={<textarea placeholder=\"Write text...\" />} />\n        <Route path=\"/view\" element={<p>Reading document preview...</p>} />\n      </Routes>\n    </BrowserRouter>\n  );\n}",
+    "output": "The Edit link opens a text area; the View link opens a preview message."
+  },
+  {
+    "id": "m4-c1",
+    "module": 4,
+    "moduleTitle": "Routing",
+    "type": "Case Study",
+    "title": "Multi-Page Website with React Router",
+    "description": "Create Home and About navigation without full-page reloads.",
+    "language": "jsx",
+    "code": "import React from 'react';\nimport { BrowserRouter, Routes, Route, Link } from 'react-router-dom';\n\nfunction Home() { return <h2>Home Page</h2>; }\nfunction About() { return <h2>About Page</h2>; }\n\nexport default function SimpleNav() {\n  return (\n    <BrowserRouter>\n      <nav>\n        <Link to=\"/\">Home</Link> | <Link to=\"/about\">About</Link>\n      </nav>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}",
+    "output": "Use the Home and About links to switch between the two pages."
+  },
+  {
+    "id": "m4-c2",
+    "module": 4,
+    "moduleTitle": "Routing",
+    "type": "Case Study",
+    "title": "Blog App with Dynamic Routes",
+    "description": "Display a blog topic using a URL route parameter.",
+    "language": "jsx",
+    "code": "import React from 'react';\nimport { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';\n\nfunction Post() {\n  const { title } = useParams();\n  return <h2>Reading Article: {title}</h2>;\n}\n\nexport default function Blog() {\n  return (\n    <BrowserRouter>\n      <Link to=\"/blog/react\">React Post</Link> | <Link to=\"/blog/javascript\">JS Post</Link>\n      <Routes>\n        <Route path=\"/blog/:title\" element={<Post />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}",
+    "output": "The route displays the topic name, such as react or javascript, from the URL."
+  },
+  {
+    "id": "m5-h1",
+    "module": 5,
+    "moduleTitle": "APIs & Advanced",
+    "type": "Hands-on",
+    "title": "Data Visualization Dashboard with Charts",
+    "description": "Render simple horizontal score bars by looping through an array in React.",
+    "language": "jsx",
+    "code": "import React from 'react';\n\nexport default function SimpleBars() {\n  const scores = [30, 80, 50, 90];\n\n  return (\n    <div>\n      <h4>Monthly Score Bars</h4>\n      {scores.map((score, i) => (\n        <div key={i} style={{ background: \"blue\", width: score * 2, height: 18, margin: 4, color: \"white\" }}>\n          {score}\n        </div>\n      ))}\n    </div>\n  );\n}",
+    "output": "Four horizontal bars are displayed with widths based on scores 30, 80, 50, and 90."
+  },
+  {
+    "id": "m5-h2",
+    "module": 5,
+    "moduleTitle": "APIs & Advanced",
+    "type": "Hands-on",
+    "title": "Server-Side Rendering (Next.js Concept)",
+    "description": "A Next.js Server Component fetches data before rendering the page on the server.",
+    "language": "jsx",
+    "code": "// Simple Next.js Server Component\nexport default async function Page() {\n  const res = await fetch(\"https://jsonplaceholder.typicode.com/todos/1\");\n  const data = await res.json();\n\n  return (\n    <div>\n      <h2>SSR Task: {data.title}</h2>\n    </div>\n  );\n}",
+    "output": "The page displays the title of the fetched todo item. An internet connection is needed for the remote API."
+  },
+  {
+    "id": "m5-c1",
+    "module": 5,
+    "moduleTitle": "APIs & Advanced",
+    "type": "Case Study",
+    "title": "Displaying Data from a Public API",
+    "description": "Use useEffect and fetch to load a todo title from a public API.",
+    "language": "jsx",
+    "code": "import React, { useState, useEffect } from 'react';\n\nexport default function FetchDemo() {\n  const [data, setData] = useState(\"Loading...\");\n\n  useEffect(() => {\n    fetch(\"https://jsonplaceholder.typicode.com/todos/1\")\n      .then(res => res.json())\n      .then(json => setData(json.title));\n  }, []);\n\n  return <h3>API Result: {data}</h3>;\n}",
+    "output": "The page initially shows Loading... and then displays the title returned by the API."
+  },
+  {
+    "id": "m5-c2",
+    "module": 5,
+    "moduleTitle": "APIs & Advanced",
+    "type": "Case Study",
+    "title": "State Management with Context",
+    "description": "Share a user name with a child component using React Context instead of passing props.",
+    "language": "jsx",
+    "code": "import React, { createContext, useContext } from 'react';\n\nconst UserContext = createContext();\n\nfunction Child() {\n  const user = useContext(UserContext);\n  return <h3>Welcome back, {user}!</h3>;\n}\n\nexport default function App() {\n  return (\n    <UserContext.Provider value=\"Chaithanya\">\n      <Child />\n    </UserContext.Provider>\n  );\n}",
+    "output": "The child component displays: Welcome back, Chaithanya!"
+  }
+]
